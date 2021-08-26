@@ -1,10 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import './Navbar.css';
 import logo from './logo.svg';
 import cart from './cart.svg';
-import circle from './Ellipse 1.png'
+import circle from './Ellipse 1.svg'
+
+
 
 function Navbar() {
+    const [circleHover, setCircleHover] = useState(false); 
+
+    const handleCircleHover = () => {
+        setCircleHover(true)
+        console.log(circleHover);
+    }
+
+    const handleCircleLeave = () => {
+        setCircleHover(false);
+        console.log(circleHover);
+    }
     return (
         <header>
             <div className="logo-container">
@@ -19,10 +33,10 @@ function Navbar() {
                     <li><a href="#" className="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <div className="cart-container">
-                <img src={cart} alt="Cart" />    
+            <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
+                <a href="#"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
             </div>
-            <img className="circle" src={circle} alt="" />
+            <img className={circleHover ? "circle circle-hover" : "circle"} src={circle} alt=""/>
         </header>
     )
 }
