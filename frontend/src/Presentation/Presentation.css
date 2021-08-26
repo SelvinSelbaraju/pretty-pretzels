@@ -1,0 +1,17 @@
+.presentation {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    height: 80vh;
+}
+
+.introduction {
+    grid-column: 2 / span 6;
+}
+
+.pretzel-picture {
+    grid-column: 8 / span 5;
+    position: relative;
+    left: 100px;
+    height: auto;
+    width: 100%;
+}
