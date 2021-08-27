@@ -12,12 +12,10 @@ function Navbar() {
 
     const handleCircleHover = () => {
         setCircleHover(true)
-        console.log(circleHover);
     }
 
     const handleCircleLeave = () => {
         setCircleHover(false);
-        console.log(circleHover);
     }
     return (
         <header>
