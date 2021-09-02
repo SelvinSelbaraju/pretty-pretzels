@@ -2,7 +2,7 @@ const Validator = require('validator');
 const isEmpty = require('is-empty');
 
 // Create function that takes the form data as an input and validates it 
-function validateRegisterInput(data) {
+module.exports = function validateRegisterInput(data) {
    let errors = {}
 
 // Convert empty fields to a string so validator can handle it 
@@ -29,7 +29,7 @@ function validateRegisterInput(data) {
         errors.password = "Password field is required";
     }
 
-    if (Validator.isEmpty(data.password2) {
+    if (Validator.isEmpty(data.password2)) {
         errors.password2 = "Confirm Password field is required";
     }
 
@@ -45,5 +45,3 @@ function validateRegisterInput(data) {
         isValid: isEmpty(errors) 
     };
 };
-
-module.exports = validateRegisterInput()
