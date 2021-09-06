@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from './logo.svg';
 import cart from './cart.svg';
@@ -18,25 +19,25 @@ function Navbar() {
         setCircleHover(false);
     }
     return (
-        <header>
-            <div className="logo-container">
-                <img src={logo} alt="Logo" />
-                <h4 className="logo-text">Pretty Pretzels</h4>
-            </div>
-            <nav>
-                <ul className="nav-links">
-                    <li><a href="#" className="nav-link">Home</a></li>
-                    <li><a href="#" className="nav-link">About</a></li>
-                    <li><a href="#" className="nav-link">Products</a></li>
-                    <li><a href="#" className="nav-link">Login</a></li>
-                    <li><a href="#" className="nav-link">Register</a></li>
-                </ul>
-            </nav>
-            <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
-                <a href="#"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
-            </div>
-            <img className={circleHover ? "circle circle-hover" : "circle"} src={circle} alt=""/>
-        </header>
+            <header>
+                <div className="logo-container">
+                    <img src={logo} alt="Logo" />
+                    <h4 className="logo-text">Pretty Pretzels</h4>
+                </div>
+                <nav>
+                    <ul className="nav-links">
+                        <li><Link to="/" className="nav-link">Home</Link></li>
+                        <li><Link to="/" className="nav-link">About</Link></li>
+                        <li><Link to="/" className="nav-link">Products</Link></li>
+                        <li><Link to="/login" className="nav-link">Login</Link></li>
+                        <li><Link to="/register" className="nav-link">Register</Link></li>
+                    </ul>
+                </nav>
+                <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
+                    <a href="#"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
+                </div>
+                <img className={circleHover ? "circle circle-hover" : "circle"} src={circle} alt=""/>
+            </header>
     )
 }
 
