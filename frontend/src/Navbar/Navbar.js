@@ -28,7 +28,8 @@ function Navbar() {
                     <li><a href="#" className="nav-link">Home</a></li>
                     <li><a href="#" className="nav-link">About</a></li>
                     <li><a href="#" className="nav-link">Products</a></li>
-                    <li><a href="#" className="nav-link">Contact</a></li>
+                    <li><a href="#" className="nav-link">Login</a></li>
+                    <li><a href="#" className="nav-link">Register</a></li>
                 </ul>
             </nav>
             <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
