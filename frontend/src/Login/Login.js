@@ -24,9 +24,7 @@ function Login() {
     const { errors } = formData 
     return (
         <>
-            <div>
-                Register Now
-            </div>
+            <h2>Login</h2>
             <form noValidate onSubmit={handleSubmit}>
                 <label htmlFor="email">Email:</label>
                 <input id="email" type="text" value={formData.email} error={errors.email} onChange={handleChange} />

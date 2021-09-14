@@ -1,5 +1,5 @@
 // Import dependencies 
-import axios from 'axios';
+import axios from '../axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
@@ -14,11 +14,13 @@ import {
 export const registerUser = (userData, history) => dispatch => {
     axios.post("api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login if successful register
-    .catch(err =>
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        }) 
+    .catch(err => {
+            console.log(err.response.data);
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        } 
     );
 };
 

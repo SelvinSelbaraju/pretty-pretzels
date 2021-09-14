@@ -7,7 +7,7 @@ const initialState = {
     loading: false
 }
 
-function reduce(state=initialState, action) => {
+function reduce(state=initialState, action) {
     switch (action.type) {
         case SET_CURRENT_USER:
             return {

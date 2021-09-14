@@ -2,12 +2,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const cors = require('cors');
 
 // Import routes
 const users = require("./routes/api/users");
 
-// Create an instance of express 
+// Create an instance of express and use cors 
 const app = express();
+app.use(cors())
 
 // Tell the server to use middleware to parse request bodies with JSON / urlencoded
 app.use(
