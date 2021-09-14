@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import rootReducer from './reducers';
 
 const initialState = {};
 
@@ -9,7 +10,7 @@ const middlware = [thunk];
 // Reducers take in a state and an action, and return an update state
 // Composer makes a function of arguments from right to left
 const store = createStore(
-    () => [],
+    rootReducer,
     initialState,
     compose(
         applyMiddleware(...middlware),
