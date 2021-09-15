@@ -15,7 +15,7 @@ function Login(props) {
     )
 
     if (props.auth.isAuthenticated) {
-        props.history.push("/");
+        props.history.push("/dashboard");
     }
 
     const handleChange = e => {
