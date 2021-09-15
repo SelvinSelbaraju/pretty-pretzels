@@ -1,7 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../actions/authActions';
+import './Login.css'
 
-function Login() {
+function Login(props) {
     const [formData, setFormdata] = useState(
         {
             email: "",
@@ -9,31 +13,54 @@ function Login() {
             errors: {}
         }
     )
+
+    if (props.auth.isAuthenticated) {
+        props.history.push("/");
+    }
+
     const handleChange = e => {
         setFormdata({...formData, [e.target.id]: e.target.value})
     }
     const handleSubmit = e => {
         console.log("yay");
+
         e.preventDefault();
 
         const userData = {
             email: formData.email,
             password: formData.password
         };
+
+        props.loginUser(userData);
+
     }
-    const { errors } = formData 
+    const errors = props.errors; 
     return (
         <>
-            <h2>Login</h2>
-            <form noValidate onSubmit={handleSubmit}>
+            <h2 className="login-title">Login</h2>
+            <form className="login-form" noValidate onSubmit={handleSubmit}>
                 <label htmlFor="email">Email:</label>
-                <input id="email" type="text" value={formData.email} error={errors.email} onChange={handleChange} />
+                <span className="red-text">{errors.email}{errors.emailnotfound}</span>
+                <input id="email" type="text" value={formData.email} error={errors.email} onChange={handleChange} /><br />
                 <label htmlFor="password">Password:</label>
-                <input id="password" type="password" value={formData.password} error={errors.password} onChange={handleChange} />
+                <span className="red-text">{errors.password}{errors.passwordincorrect}</span><br />
+                <input id="password" type="password" value={formData.password} error={errors.password} onChange={handleChange} /><br />
                 <button type="submit">Submit</button>
             </form>
         </>
     )
 }
 
-export default Login
+// Define PropTypes
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { loginUser })(Login)

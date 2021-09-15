@@ -1,0 +1,26 @@
+.login-title {
+    margin: 2rem 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+.login-form {
+    width: 25%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form button {
+    border: none;
+    background-color: #FF7A00;
+    width: 75%;
+    align-self: center;
+    color: white;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.red-text {
+    color: red;
+}

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import logo from './logo.svg';
 import cart from './cart.svg';
 import circle from './Ellipse 1.svg'
 
 
-
 function Navbar() {
+    console.log(localStorage.jwtToken);
     const [circleHover, setCircleHover] = useState(false); 
 
     const handleCircleHover = () => {
@@ -18,6 +18,7 @@ function Navbar() {
     const handleCircleLeave = () => {
         setCircleHover(false);
     }
+
     return (
             <header>
                 <div className="logo-container">
