@@ -34,6 +34,10 @@ function Register(props) {
         props.registerUser(userData, props.history);
     }
     const errors = props.errors
+
+    if (props.auth.isAuthenticated) {
+        props.history.push("/dashboard");
+    }
     return (
         <>
             <h2 className="register-title">Register Now</h2>

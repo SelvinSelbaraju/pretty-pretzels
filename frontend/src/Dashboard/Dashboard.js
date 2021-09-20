@@ -1,20 +1,22 @@
-import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 import './Dashboard.css';
 
 function Dashboard(props) {
+    const history = useHistory();
     const onLogoutClick = e => {
+        e.preventDefault();
         props.logoutUser();
-        props.history.push("/login")
+        history.go(0);
     };
 
     const user = props.auth.user;
     return (
         <div>
-            <h2>Oh Hello! {user.name ? user.name.split(" ")[0] : null}</h2>
-            <button onClick={() => onLogoutClick()}>Logout</button>
+            <h2>{user.name ? `Hello ${user.name.split(" ")[0]}` : "Goodbye!"}</h2>
+            <button onClick={onLogoutClick}>Logout</button>
         </div>
     )
 }
