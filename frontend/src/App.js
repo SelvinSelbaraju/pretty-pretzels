@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './Navbar/Navbar';
 import Presentation from './Presentation/Presentation';
+import Products from './Products/Products';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import PrivateRoute from './private-route/PrivateRoute';
@@ -39,8 +40,8 @@ function App() {
         </div>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/products" component={Products} />
         <Route exact path="/" component={Presentation} />
-
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>

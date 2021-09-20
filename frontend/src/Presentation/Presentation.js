@@ -13,8 +13,8 @@ function Presentation() {
                         We come in any kind of flavour you can think of!
                     </p>
                     <div className="cta">
-                        <button className="cta-more"><a href="#">Find Out More</a></button>
-                        <button className="cta-buy"><a href="#">Buy Now</a></button>
+                        <button className="cta-more"><a href="/">Find Out More</a></button>
+                        <button className="cta-buy"><a href="/">Buy Now</a></button>
                     </div>
                 </div>
                 <img  className="pretzel-picture" src={pretzels} alt="Pretzels" />

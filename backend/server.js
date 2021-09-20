@@ -6,6 +6,7 @@ const cors = require('cors');
 
 // Import routes
 const users = require("./routes/api/users");
+const products = require("./routes/api/products");
 
 // Create an instance of express and use cors 
 const app = express();
@@ -40,6 +41,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/products", products);
 
 // Listen to requests from a specific port
 const port = 5000;

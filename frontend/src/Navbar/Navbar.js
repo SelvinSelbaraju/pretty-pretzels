@@ -11,8 +11,6 @@ import circle from './Ellipse 1.svg'
 
 
 function Navbar(props) {
-    console.log(localStorage.jwtToken);
-    console.log(props.auth);
     const [circleHover, setCircleHover] = useState(false); 
 
     const handleCircleHover = () => {
@@ -40,7 +38,7 @@ function Navbar(props) {
                     <ul className="nav-links">
                         <li><Link to="/" className="nav-link">Home</Link></li>
                         <li><Link to="/" className="nav-link">About</Link></li>
-                        <li><Link to="/" className="nav-link">Products</Link></li>
+                        <li><Link to="/products" className="nav-link">Products</Link></li>
                         {
                             props.auth.isAuthenticated ?
                             <>
@@ -56,7 +54,7 @@ function Navbar(props) {
                     </ul>
                 </nav>
                 <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
-                    <a href="#"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
+                    <a href="/"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
                 </div>
                 <img className={circleHover ? "circle circle-hover" : "circle"} src={circle} alt=""/>
             </header>
