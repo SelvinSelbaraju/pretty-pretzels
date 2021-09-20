@@ -33,6 +33,14 @@ nav {
     color: #7c7c7c;
 }
 
+.dashboard {
+    color: #FF7A00;
+}
+
+.logout {
+    cursor: pointer;
+}
+
 .cart-container {
     grid-column: 11 / span 2;
     display: flex;

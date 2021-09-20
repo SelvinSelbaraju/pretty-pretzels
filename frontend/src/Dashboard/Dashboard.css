@@ -5,11 +5,3 @@
 .welcome-title {
     text-align: center;
 }
-
-.logout-button {
-    border: none;
-    background-color: #FF7A00;
-    color: white;
-    padding: 10px 5px;
-    cursor: pointer;
-}
