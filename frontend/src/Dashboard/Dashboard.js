@@ -9,14 +9,14 @@ function Dashboard(props) {
     const onLogoutClick = e => {
         e.preventDefault();
         props.logoutUser();
-        history.go(0);
+        history.go(0)
     };
 
     const user = props.auth.user;
     return (
-        <div>
-            <h2>{user.name ? `Hello ${user.name.split(" ")[0]}` : "Goodbye!"}</h2>
-            <button onClick={onLogoutClick}>Logout</button>
+        <div className="dashboard-container">
+            <h2 className="welcome-title">{user.name ? `Welcome back ${user.name.split(" ")[0]}!` : "Goodbye!"}</h2>
+            <button className="logout-button" onClick={onLogoutClick}>Logout</button>
         </div>
     )
 }
