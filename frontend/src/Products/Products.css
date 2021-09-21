@@ -15,6 +15,12 @@
     margin-top: 75px;
 }
 
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .product-img {
     width: 100%;
     height: 175px;
@@ -26,4 +32,21 @@
 
 .product-desc {
 
+}
+
+.quantity {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.add-basket {
+    margin-top: 10px;   
+    background-color: #FF7A00;
+    color: white;
+    border: none;
+    width: 75%;
+    padding: 10px;
+    cursor: pointer;
 }
