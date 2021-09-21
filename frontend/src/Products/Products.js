@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect} from 'react';
 import axios from '../axios';
+import ProductCard from './ProductCard';
+import "./Products.css"
 
 function Products() {
     const [productData, setProductData] = useState([])
@@ -15,13 +17,13 @@ function Products() {
     };
     useEffect(fetchData,[]);
     return (
-        <div>
-            Tester
-            <ul>
+        <div className="product-container">
+            <h2 className="product-heading">Products</h2>
+            <ul className="product-list">
             {
                 productData.map(item => {
                     return (
-                        <li key={item._id}>{item.name}</li>
+                        <ProductCard item={item} />
                     )
                 })
             }

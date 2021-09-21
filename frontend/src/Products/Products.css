@@ -1,0 +1,29 @@
+.product-container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.product-heading {
+    text-align: center;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 50px;
+    list-style-type: none;
+    margin-top: 75px;
+}
+
+.product-img {
+    width: 100%;
+    height: 175px;
+}
+
+.product-name {
+
+}
+
+.product-desc {
+
+}

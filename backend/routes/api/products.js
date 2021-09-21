@@ -10,4 +10,18 @@ router.get("/list", (req, res) => {
     })
 });
 
+// Add a new product
+router.post("/add", (req, res) => {
+    const newProduct = new Product({
+        name: req.body.name,
+        description: req.body.description,
+        imgUrl: req.body.imgUrl,
+        dateAdded: Date.now()
+    });
+    newProduct
+    .save()
+    .then(product => res.json(product))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;
