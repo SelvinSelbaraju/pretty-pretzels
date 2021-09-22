@@ -5,6 +5,7 @@ import Products from './Products/Products';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import PrivateRoute from './private-route/PrivateRoute';
+import BasketTab from './Products/BasketTab';
 import jwtDecode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/products" component={Products} />
+        <Route exact path="/mybasket" component={BasketTab} />
         <Route exact path="/" component={Presentation} />
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />

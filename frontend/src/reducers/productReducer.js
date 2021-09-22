@@ -13,12 +13,16 @@ function reduce(state=initialProductState, action) {
             });
             return {
                 ...state,
-                products: action.payload,
+                products: localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : action.payload,
                 loading: false
             };
         case CHANGE_QUANTIY:
             state.products[action.payload.index].quantity += action.payload.delta
-            return state;
+            localStorage.setItem("products", JSON.stringify(state.products))
+            return {
+                ...state,
+                products: localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : state.products
+            }
         default:
             return state;
     }

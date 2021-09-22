@@ -14,7 +14,7 @@ function Products(props) {
             {
                 [...Array(props.products.products.length).keys()].map((index) => {
                     return (
-                        <ProductCard key={index} productIndex={index}/>
+                        <ProductCard products={props.products.products} key={index} productIndex={index}/>
                     )
                 })
             }

@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { changeQuantity} from '../actions/productActions';
+import { changeQuantity } from '../actions/productActions';
 
 function ProductButtons(props) {
     const [trigger, setTrigger] = useState(0)
     const index = props.productIndex;
-    const item = props.products.products[index];
-    const { quantity } = item
+    let products = props.products.products;
+    if (localStorage.getItem("products")) {
+        products = JSON.parse(localStorage.getItem("products"));
+    }
+    const item = products[index];
+    const { quantity } = item;
+    
     return (
         <>
         {

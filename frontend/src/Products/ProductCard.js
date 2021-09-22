@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ProductButtons from './ProductButtons';
 
 function ProductCard(props) {
     const index = props.productIndex;
-    const item = props.products.products[index];
+    const item = props.products[index];
     const { name, description, imgUrl} = item
     return (
         <li className="product">
@@ -16,10 +15,4 @@ function ProductCard(props) {
     )
 };
 
-const mapStatetoProps = state => {
-    return {
-        products: state.products
-    }
-};
-
-export default connect(mapStatetoProps)(ProductCard)
+export default ProductCard

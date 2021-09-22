@@ -54,7 +54,7 @@ function Navbar(props) {
                     </ul>
                 </nav>
                 <div className="cart-container" onMouseEnter={handleCircleHover} onMouseLeave={handleCircleLeave}>
-                    <a href="/"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></a>    
+                    <Link to="/mybasket"><img className={circleHover ? "cart-animate" : "cart-static"} src={cart} alt="Cart"/></Link>    
                 </div>
                 <img className={circleHover ? "circle circle-hover" : "circle"} src={circle} alt=""/>
             </header>
