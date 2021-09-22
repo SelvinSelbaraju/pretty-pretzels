@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 function ProductCard(props) {
-    const { _id, name, description, imgUrl } = props.item
+    const { name, description, imgUrl } = props.item
+    const index = props.productIndex;
     const [quantity, setQuantity] = useState(0);
     return (
-        <li className="product" key={_id}>
+        <li className="product">
             <img className="product-img" src={imgUrl} alt={name} />
             <h4 className="product-name">{name}</h4>
             <p className="product-desc">{description}</p>

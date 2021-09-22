@@ -1,29 +1,20 @@
 import React from 'react'
-import { useState, useEffect} from 'react';
-import axios from '../axios';
+import { useEffect} from 'react';
+import { connect } from 'react-redux';
 import ProductCard from './ProductCard';
+import { storeProducts } from '../actions/productActions';
 import "./Products.css"
 
-function Products() {
-    const [productData, setProductData] = useState([])
-    const fetchData = () => {
-        axios.get('/api/products/list')
-            .then((response) => {
-                setProductData(response.data.products);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-    useEffect(fetchData,[]);
+function Products(props) {
+    useEffect(() => props.storeProducts(),[])
     return (
         <div className="product-container">
             <h2 className="product-heading">Products</h2>
             <ul className="product-list">
             {
-                productData.map(item => {
+                props.products.products.map((item, index) => {
                     return (
-                        <ProductCard item={item} />
+                        <ProductCard item={item} key={index} productIndex={index}/>
                     )
                 })
             }
@@ -32,4 +23,10 @@ function Products() {
     )
 }
 
-export default Products
+const mapStatetoProps = state => {
+    return {
+        products: state.products
+    };
+};
+
+export default connect(mapStatetoProps, { storeProducts })(Products)
