@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loginUser } from '../actions/authActions';
 import './Login.css'
 
@@ -47,6 +48,11 @@ function Login(props) {
                 <input id="password" type="password" value={formData.password} error={errors.password} onChange={handleChange} /><br />
                 <button type="submit">Submit</button>
             </form>
+            <div className="click-text">
+                <p>Not signed up?</p>
+                <Link className="click-link" to="/register">Register here!</Link>
+            </div>
+
         </>
     )
 }

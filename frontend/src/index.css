@@ -18,3 +18,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.click-link {
+  text-decoration: underline;
+  color: blue;
+}
+
+.click-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}

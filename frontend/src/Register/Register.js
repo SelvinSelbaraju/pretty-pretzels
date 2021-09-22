@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter} from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { registerUser } from '../actions/authActions';
 import classnames from 'classnames';
@@ -56,6 +56,10 @@ function Register(props) {
                 <input id="password2" type="password" value={formData.password2} error={errors.password2} className={classnames("", {invalid: errors.password2})} onChange={handleChange} /><br />
                 <button type="submit">Submit</button>
             </form>
+            <div className="click-text">
+                <p>Already signed up?</p>
+                <Link className="click-link" to="/login">Login here!</Link>
+            </div>
         </>
     )
 }

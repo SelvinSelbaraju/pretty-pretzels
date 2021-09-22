@@ -26,19 +26,21 @@
     height: 175px;
 }
 
-.product-name {
-
-}
-
-.product-desc {
-
-}
-
 .quantity {
     display: flex;
     justify-content: space-evenly;
     width: 50%;
+    margin-top: 10px;
+    padding: 5px 0;
     margin: 0 auto;
+}
+
+.quantity-btn {
+    background-color: #FF7A00;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .add-basket {

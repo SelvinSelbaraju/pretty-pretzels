@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect} from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import ProductCard from './ProductCard';
 import { storeProducts } from '../actions/productActions';
 import "./Products.css"
@@ -13,9 +12,9 @@ function Products(props) {
             <h2 className="product-heading">Products</h2>
             <ul className="product-list">
             {
-                props.products.products.map((item, index) => {
+                [...Array(props.products.products.length).keys()].map((index) => {
                     return (
-                        <ProductCard item={item} key={index} productIndex={index}/>
+                        <ProductCard key={index} productIndex={index}/>
                     )
                 })
             }
