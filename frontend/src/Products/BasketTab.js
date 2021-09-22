@@ -9,9 +9,11 @@ function BasketTab(props) {
     useEffect(() => props.storeProducts(),[]);
     let basketEmpty = true;
     const basketProducts = JSON.parse(localStorage.getItem("products"));
-    const inBasket = basketProducts.filter(product => product.quantity > 0);
-    if (inBasket.length > 0) {
-        basketEmpty = false;
+    if (basketProducts) {
+        const inBasket = basketProducts.filter(product => product.quantity > 0);
+        if (inBasket.length > 0) {
+            basketEmpty = false;
+        }
     }
     return (
         <div className="product-container">
