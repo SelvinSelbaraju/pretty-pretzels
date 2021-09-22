@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect} from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ProductCard from './ProductCard';
 import { storeProducts } from '../actions/productActions';
 import "./Products.css"

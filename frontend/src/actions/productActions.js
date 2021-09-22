@@ -4,8 +4,7 @@ import axios from '../axios';
 // Import action types
 import {
     STORE_PRODUCTS,
-    ADD_QUANTIY,
-    REMOVE_QUANTITY
+    CHANGE_QUANTIY
 } from './types'
 
 // Save products to state
@@ -20,9 +19,21 @@ export const storeProducts = () => dispatch => {
     );
 };
 
- export const setProducts = products => {
+const setProducts = products => {
     return {
         type: STORE_PRODUCTS,
         payload: products
     };
+};
+
+
+// Quantity Management
+export const changeQuantity = (delta,index) => dispatch => {
+    dispatch({
+        type: CHANGE_QUANTIY,
+        payload: {
+            delta,
+            index
+        }
+    });
 };
