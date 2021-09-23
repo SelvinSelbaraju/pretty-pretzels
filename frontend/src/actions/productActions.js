@@ -4,7 +4,9 @@ import axios from '../axios';
 // Import action types
 import {
     STORE_PRODUCTS,
-    CHANGE_QUANTIY
+    CHANGE_QUANTIY,
+    GET_BASKET,
+    POST_BASKET
 } from './types'
 
 // Save products to state
@@ -35,5 +37,23 @@ export const changeQuantity = (delta,index) => dispatch => {
             delta,
             index
         }
+    })
+};
+
+// Basket Management
+export const getBasket = user => dispatch => {
+    axios.get("/api/basket", { params: { userId: user.id }})
+    .then(res => {
+        dispatch({
+            type: GET_BASKET,
+            payload: res.data.basket
+        })
+    });
+};
+
+export const postBasket = user => dispatch => {
+    dispatch({
+        type: POST_BASKET,
+        payload: user
     });
 };

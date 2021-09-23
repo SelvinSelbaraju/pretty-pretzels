@@ -1,7 +1,10 @@
-import { STORE_PRODUCTS, CHANGE_QUANTIY } from "../actions/types";
+import { STORE_PRODUCTS, CHANGE_QUANTIY, GET_BASKET, POST_BASKET } from "../actions/types";
+import axios from "../axios";
+import { getBasket } from "../actions/productActions";
 
 const initialProductState = {
     products: [],
+    userBasket: [],
     loading: true
 };
 
@@ -13,16 +16,23 @@ function reduce(state=initialProductState, action) {
             });
             return {
                 ...state,
-                products: localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : action.payload,
+                products: action.payload,
                 loading: false
             };
         case CHANGE_QUANTIY:
-            state.products[action.payload.index].quantity += action.payload.delta
-            localStorage.setItem("products", JSON.stringify(state.products))
+            state.userBasket[action.payload.index].quantity = Math.max(state.userBasket[action.payload.index].quantity+action.payload.delta, 0);
+            return state;
+        case GET_BASKET:
             return {
                 ...state,
-                products: localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : state.products
+                userBasket: action.payload.basketProducts
             }
+        case POST_BASKET:
+            const basketProducts = state.userBasket
+            const userId = action.payload.id
+            axios.post("/api/basket", { basketProducts }, { params: { userId } })
+            .then(res => getBasket(action.payload));
+            return state;
         default:
             return state;
     }

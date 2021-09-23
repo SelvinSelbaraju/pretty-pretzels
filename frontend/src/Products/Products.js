@@ -2,19 +2,25 @@ import React from 'react'
 import { useEffect} from 'react';
 import { connect } from 'react-redux';
 import ProductCard from './ProductCard';
-import { storeProducts } from '../actions/productActions';
+import { storeProducts, getBasket } from '../actions/productActions';
 import "./Products.css"
 
 function Products(props) {
-    useEffect(() => props.storeProducts(),[])
+    useEffect(() => {props.storeProducts(); props.getBasket(props.auth.user)},[]);
+    let products = [];
+    if (props.products.userBasket) {
+        products = props.products.userBasket;
+    } else {
+        products = props.products.products
+    }
     return (
         <div className="product-container">
             <h2 className="product-heading">Products</h2>
             <ul className="product-list">
             {
-                [...Array(props.products.products.length).keys()].map((index) => {
+                [...Array(products.length).keys()].map((index) => {
                     return (
-                        <ProductCard products={props.products.products} key={index} productIndex={index}/>
+                        <ProductCard products={products} key={index} productIndex={index}/>
                     )
                 })
             }
@@ -25,8 +31,10 @@ function Products(props) {
 
 const mapStatetoProps = state => {
     return {
-        products: state.products
+        auth: state.auth,
+        products: state.products,
+        userBasket: state.userBasket
     };
 };
 
-export default connect(mapStatetoProps, { storeProducts })(Products)
+export default connect(mapStatetoProps, { storeProducts, getBasket })(Products)
