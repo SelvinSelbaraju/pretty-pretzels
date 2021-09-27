@@ -24,8 +24,11 @@ function reduce(state=initialProductState, action) {
             return state;
         case GET_BASKET:
             if (!action.payload) {
-                if (!action.payload) {
-                    action.payload = {};
+                action.payload = {};
+                if (localStorage.getItem("basketProducts"))
+                {
+                    action.payload.basketProducts = JSON.parse(localStorage.getItem("basketProducts"));
+                } else {
                     action.payload.basketProducts = state.products;
                 }
             }
@@ -36,8 +39,12 @@ function reduce(state=initialProductState, action) {
         case POST_BASKET:
             const basketProducts = state.userBasket
             const userId = action.payload.id
-            axios.post("/api/basket", { basketProducts }, { params: { userId } })
-            .then(res => getBasket(action.payload));
+            if (userId) {
+                axios.post("/api/basket", { basketProducts }, { params: { userId } })
+                .then(res => getBasket(action.payload));
+            } else {
+                localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
+            }
             return state;
         default:
             return state;
