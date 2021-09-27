@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { changeQuantity, getBasket, postBasket } from '../actions/productActions';
 
 function ProductButtons(props) {
-    const [trigger, setTrigger] = useState(0)
+    const [trigger, setTrigger] = useState(1)
     const index = props.productIndex;
     let products = [];
     if (props.products.userBasket) {
@@ -18,7 +18,7 @@ function ProductButtons(props) {
     const handleQuantityChange = (user, delta, index) => {
         props.changeQuantity(delta, index);
         props.postBasket(user);
-        setTrigger(Math.random());
+        setTrigger(trigger*0.99);
     }
     return (
         <>

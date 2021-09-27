@@ -23,6 +23,12 @@ function reduce(state=initialProductState, action) {
             state.userBasket[action.payload.index].quantity = Math.max(state.userBasket[action.payload.index].quantity+action.payload.delta, 0);
             return state;
         case GET_BASKET:
+            if (!action.payload) {
+                if (!action.payload) {
+                    action.payload = {};
+                    action.payload.basketProducts = state.products;
+                }
+            }
             return {
                 ...state,
                 userBasket: action.payload.basketProducts
