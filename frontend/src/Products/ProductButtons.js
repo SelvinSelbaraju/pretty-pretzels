@@ -1,23 +1,34 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { changeQuantity, getBasket, postBasket } from '../actions/productActions';
+import { changeQuantity, getBasket } from '../actions/productActions';
+import axios from '../axios';
 
 function ProductButtons(props) {
     const [trigger, setTrigger] = useState(1)
     const index = props.productIndex;
     let products = [];
-    if (props.products.userBasket) {
-        products = props.products.userBasket
+    if (props.products.userBasket.basketProducts) {
+        products = props.products.userBasket.basketProducts;
     } else {
-        products = props.products.products
+        products = props.products.products;
     }
     const item = products[index];
     const { quantity } = item;
     const user = props.auth.user;
     
+    const postBasket = (basket, user) => {
+        if (user.id) {
+            axios.post("/api/basket", { basket }, { params: {userId: user.id} })
+            .then(res => getBasket(user))
+            .catch(err => console.log(err))
+        } else {
+            localStorage.setItem("basketProducts", JSON.stringify(basket));
+        }
+    };
+
     const handleQuantityChange = (user, delta, index) => {
         props.changeQuantity(delta, index);
-        props.postBasket(user);
+        postBasket(products, user);
         setTrigger(trigger*0.99);
     }
     return (
@@ -43,4 +54,4 @@ const mapStatetoProps = state => {
     }
 };
 
-export default connect(mapStatetoProps, { changeQuantity, getBasket, postBasket })(ProductButtons)
+export default connect(mapStatetoProps, { changeQuantity, getBasket })(ProductButtons)

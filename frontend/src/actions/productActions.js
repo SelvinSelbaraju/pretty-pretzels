@@ -5,15 +5,21 @@ import axios from '../axios';
 import {
     STORE_PRODUCTS,
     CHANGE_QUANTIY,
-    GET_BASKET,
-    POST_BASKET
+    GET_BASKET
 } from './types'
 
 // Save products to state
 export const storeProducts = () => dispatch => {
     axios.get("api/products/list")
     .then(res => {
-        dispatch(setProducts(res.data.products))
+        let products = res.data.products;
+        for (let i =0; i < products.length; i++) {
+            products.quantity = 0;
+        };
+        dispatch({
+            type: STORE_PRODUCTS,
+            payload: res.data.products
+        })
     })
     .catch(err => {
             console.log(err);
@@ -21,15 +27,7 @@ export const storeProducts = () => dispatch => {
     );
 };
 
-const setProducts = products => {
-    return {
-        type: STORE_PRODUCTS,
-        payload: products
-    };
-};
-
-
-// Quantity Management
+// Quantity Management, handled in reducer as needs to modify the existing store
 export const changeQuantity = (delta,index) => dispatch => {
     dispatch({
         type: CHANGE_QUANTIY,
@@ -44,16 +42,24 @@ export const changeQuantity = (delta,index) => dispatch => {
 export const getBasket = user => dispatch => {
     axios.get("/api/basket", { params: { userId: user.id }})
     .then(res => {
+        const basket = checkBasket(res.data.basket);
         dispatch({
             type: GET_BASKET,
-            payload: res.data.basket
+            payload: basket
         })
-    });
+    })
+    .catch(err => console.log(err))
 };
 
-export const postBasket = user => dispatch => {
-    dispatch({
-        type: POST_BASKET,
-        payload: user
-    });
-};
+const checkBasket = basket => {
+    if (basket) {
+        return basket;
+    } else if (localStorage.getItem("basketProducts")) {
+        return {
+            userId: null,
+            basketProducts: JSON.parse(localStorage.getItem("basketProducts"))
+        }; 
+    } else {
+        return null;
+    }  
+}; 

@@ -4,7 +4,7 @@ import ProductButtons from './ProductButtons';
 function ProductCard(props) {
     const index = props.productIndex;
     const item = props.products[index];
-    const { name, description, imgUrl} = item
+    const { name, description, imgUrl} = item;
     return (
         <li className="product">
             <img className="product-img" src={imgUrl} alt={name} />
