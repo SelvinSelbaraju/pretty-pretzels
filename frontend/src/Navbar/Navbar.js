@@ -37,7 +37,7 @@ function Navbar(props) {
                 <nav>
                     <ul className="nav-links">
                         <li><Link to="/" className="nav-link">Home</Link></li>
-                        <li><Link to="/" className="nav-link">About</Link></li>
+                        <li><Link to="/about" className="nav-link">About</Link></li>
                         <li><Link to="/products" className="nav-link">Products</Link></li>
                         {
                             props.auth.isAuthenticated ?

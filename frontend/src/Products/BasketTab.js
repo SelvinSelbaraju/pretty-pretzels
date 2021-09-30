@@ -27,13 +27,18 @@ function BasketTab(props) {
                     <h4 className="basket-empty-title">Your basket is empty!</h4>
                     <button className="view-products"><Link to="/products">View Our Range</Link></button>
                 </div> :
-            <ul className="product-list">
-                {
-                    basket.map((product, index) => {
-                        return product.quantity > 0 ? <ProductCard products={basket} key={index} productIndex={index}/> : null 
-                    })
-                }
-            </ul>
+            <>
+                <ul className="product-list">
+                    {
+                        basket.map((product, index) => {
+                            return product.quantity > 0 ? <ProductCard products={basket} key={index} productIndex={index}/> : null 
+                        })
+                    }
+                </ul>
+                <div className="checkout-container">
+                    <button className="checkout-btn">Complete Purchase</button>
+                </div>    
+            </>
             }
         </div>
     )

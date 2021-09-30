@@ -14,7 +14,7 @@ function Presentation() {
                         We come in any kind of flavour you can think of!
                     </p>
                     <div className="cta">
-                        <button className="cta-more"><Link to="/">Find Out More</Link></button>
+                        <button className="cta-more"><Link to="/about">Find Out More</Link></button>
                         <button className="cta-buy"><Link to="/products">View Our Range</Link></button>
                     </div>
                 </div>

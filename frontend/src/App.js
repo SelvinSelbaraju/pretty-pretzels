@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './Navbar/Navbar';
 import Presentation from './Presentation/Presentation';
+import About from './About/About';
 import Products from './Products/Products';
 import Login from './Login/Login';
 import Register from './Register/Register';
@@ -39,6 +40,7 @@ function App() {
         <div className="App">
           <Navbar />
         </div>
+        <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/products" component={Products} />

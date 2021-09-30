@@ -68,3 +68,18 @@
     margin-top: 10px;
     cursor: pointer;
 }
+
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.checkout-btn {
+    background-color: #FF7A00;
+    color: white;
+    font-size: 1.25rem;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
