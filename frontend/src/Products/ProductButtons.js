@@ -18,8 +18,10 @@ function ProductButtons(props) {
     
     const postBasket = (basket, user) => {
         if (user.id) {
-            axios.post("/api/basket", { basket }, { params: {userId: user.id} })
-            .then(res => getBasket(user))
+            axios.post("/api/basket", { basketProducts: basket }, { params: {userId: user.id} })
+            .then(res => {
+                getBasket(user)
+            })
             .catch(err => console.log(err))
         } else {
             localStorage.setItem("basketProducts", JSON.stringify(basket));
