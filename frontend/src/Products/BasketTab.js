@@ -6,16 +6,14 @@ import { getBasket } from '../actions/productActions';
 import './Products.css' 
 
 function BasketTab(props) {
-    useEffect(() => props.getBasket(props.auth.user),[]);
-    let basketEmpty = true;
-    let products = [];
-    if (props.products.userBasket) {
-        products = props.products.userBasket;
-    } else {
-        products = props.products.products
+    const fetchData = (user =props.auth.user) => {
+        props.getBasket(user);
     }
-    if (products) {
-        const inBasket = products.filter(product => product.quantity > 0);
+    const basket = props.products.userBasket.basketProducts;
+    useEffect(()=> fetchData(), []);
+    let basketEmpty = true;
+    if (basket) {
+        const inBasket = basket.filter(product => product.quantity > 0);
         if (inBasket.length > 0) {
             basketEmpty = false;
         }
@@ -31,8 +29,8 @@ function BasketTab(props) {
                 </div> :
             <ul className="product-list">
                 {
-                    products.map((product, index) => {
-                        return product.quantity > 0 ? <ProductCard products={products} key={index} productIndex={index}/> : null 
+                    basket.map((product, index) => {
+                        return product.quantity > 0 ? <ProductCard products={basket} key={index} productIndex={index}/> : null 
                     })
                 }
             </ul>

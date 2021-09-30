@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { loginUser } from '../actions/authActions';
 import './Login.css'
 
@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { loginUser })(Login)
+export default connect(mapStateToProps, { loginUser })(Login);
