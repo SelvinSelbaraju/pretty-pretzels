@@ -18,6 +18,7 @@ router.post("/basket", (req, res) => {
             basketProducts: req.body.basketProducts        
         });
         Basket.findOneAndUpdate({userId: req.query.userId}, {basketProducts: req.body.basketProducts}, (err, data) => {
+            console.log(data);
             if (!data) {
                 newBasket.save()
                 .then(basket => res.json(basket))

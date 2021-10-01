@@ -1,9 +1,10 @@
-import { STORE_PRODUCTS, CHANGE_QUANTIY, GET_BASKET } from "../actions/types";
+import { STORE_PRODUCTS, CHANGE_QUANTIY, GET_BASKET, CLEAR_BASKET, RESET_BASKET } from "../actions/types";
 
 const initialProductState = {
     products: [],
     userBasket: [],
-    loading: true
+    loading: true,
+    checkedOut: false
 };
 
 function reduce(state=initialProductState, action) {
@@ -28,7 +29,18 @@ function reduce(state=initialProductState, action) {
                 return {
                     ...state,
                     userBasket: userBasket
-                }
+                };
+        case CLEAR_BASKET:
+            state.userBasket.basketProducts = action.payload;
+            return {
+                ...state,
+                checkedOut: true
+            };
+        case RESET_BASKET:
+            return {
+                ...state,
+                checkedOut: false
+            }
         default:
             return state;
     }

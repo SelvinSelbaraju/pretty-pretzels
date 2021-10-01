@@ -6,15 +6,15 @@ import './Dashboard.css';
 
 function Dashboard(props) {
     const user = props.auth.user;
-    const [basket, setBasket] = useState(null)
+    const [basket, setBasket] = useState(null);
     const fetchBasket = user => {
-            axios.get("/api/basket", { params: { userId: user.id } })
-            .then(res => {
-                if (!res.data.basket) {
-                    setBasket(JSON.parse(localStorage.getItem("basketProducts")));
-                }
-            })
-            .catch(err => console.log(err))
+        axios.get("/api/basket", { params: { userId: user.id } })
+        .then(res => {
+            if (!res.data.basket) {
+                setBasket(JSON.parse(localStorage.getItem("basketProducts")));
+            }
+        })
+        .catch(err => console.log(err))
     };
     useEffect(() => {fetchBasket(user)}, []);
     if (basket) {

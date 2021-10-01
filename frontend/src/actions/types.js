@@ -5,3 +5,5 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const STORE_PRODUCTS = "STORE_PRODUCTS";
 export const CHANGE_QUANTIY = "CHANGE_QUANTITY";
 export const GET_BASKET = "GET_BASKET";
+export const CLEAR_BASKET = "CLEAR_BASKET";
+export const RESET_BASKET = "RESET_BASKET";

@@ -5,7 +5,9 @@ import axios from '../axios';
 import {
     STORE_PRODUCTS,
     CHANGE_QUANTIY,
-    GET_BASKET
+    GET_BASKET,
+    CLEAR_BASKET,
+    RESET_BASKET
 } from './types'
 
 // Save products to state
@@ -66,8 +68,24 @@ const checkBasket = basket => {
 
 
 // Checkout Products
-export const checkoutProducts = (basket, user) => {
+export const checkoutProducts = (basket, user) => dispatch => {
+    console.log("Clicked");
     axios.post("/api/orders", {basketProducts: basket}, {params: {userId: user.id} })
     .then(res => console.log(res))
+    .then(() => {
+        for (let i =0; i < basket.length; i++) {
+            basket[i].quantity = 0;
+        }
+        dispatch({
+            type: CLEAR_BASKET,
+            payload: basket
+        })
+    })
     .catch(err => console.log(err))
+};
+
+export const resetCheckout = () => dispatch => {
+    dispatch({
+        type: RESET_BASKET
+    })
 };
