@@ -37,8 +37,11 @@ function BasketTab(props) {
                     }
                 </ul>
                 <div className="checkout-container">
-                    <button onClick={() => checkoutProducts(basket, user)} className="checkout-btn">Complete Purchase</button>
-                </div>    
+                    {props.auth.isAuthenticated ?  
+                    <button onClick={() => checkoutProducts(basket, user)} className="checkout-btn">Complete Purchase</button> :
+                    <button className="checkout-btn"><Link to="/register">Please Register to Checkout</Link></button>
+                    }
+                </div>      
             </>
             }
         </div>
