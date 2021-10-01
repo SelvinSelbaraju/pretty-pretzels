@@ -63,3 +63,11 @@ const checkBasket = basket => {
         return null;
     }  
 }; 
+
+
+// Checkout Products
+export const checkoutProducts = (basket, user) => {
+    axios.post("/api/orders", {basketProducts: basket}, {params: {userId: user.id} })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+};

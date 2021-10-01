@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ProductCard from './ProductCard';
 import { connect } from 'react-redux'; 
 import { Link } from 'react-router-dom'
-import { getBasket } from '../actions/productActions';
+import { getBasket, checkoutProducts } from '../actions/productActions';
 import './Products.css' 
 
 function BasketTab(props) {
@@ -10,6 +10,7 @@ function BasketTab(props) {
         props.getBasket(user);
     }
     const basket = props.products.userBasket.basketProducts;
+    const user = props.auth.user;
     useEffect(()=> fetchData(), []);
     let basketEmpty = true;
     if (basket) {
@@ -36,7 +37,7 @@ function BasketTab(props) {
                     }
                 </ul>
                 <div className="checkout-container">
-                    <button className="checkout-btn">Complete Purchase</button>
+                    <button onClick={() => checkoutProducts(basket, user)} className="checkout-btn">Complete Purchase</button>
                 </div>    
             </>
             }
@@ -51,4 +52,4 @@ const mapStatetoProps = state => {
     }
 };
 
-export default connect(mapStatetoProps, { getBasket })(BasketTab)
+export default connect(mapStatetoProps, { getBasket, checkoutProducts })(BasketTab)
